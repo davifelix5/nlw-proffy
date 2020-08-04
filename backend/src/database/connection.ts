@@ -1,7 +1,7 @@
 import knex from 'knex'
 import path from 'path'
 
-const database = knex({
+const db = knex({
     client: 'sqlite3',
     connection: {
         filename: path.resolve(__dirname, 'database.sqlite')
@@ -9,4 +9,4 @@ const database = knex({
     useNullAsDefault: true,
 })
 
-export default database
+export default db
