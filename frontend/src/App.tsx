@@ -2,15 +2,10 @@ import React from 'react';
 
 import './assets/global.css';
 
-import LandingPage from './pages/Landing'
-
+import Router from './pages/routes'
 
 function App() {
-  return (
-    <>
-      <LandingPage />
-    </>
-  );
+  return <Router />
 }
 
 export default App;
