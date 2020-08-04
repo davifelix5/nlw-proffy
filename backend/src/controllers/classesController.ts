@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
 import db from '../database/connection'
-import hourToMinutes from '../utils/hourToMinutes'
+import hoursToMinutes from '../utils/hoursToMinutes'
 
 interface ClassSchedule {
     weekday: number,
@@ -10,6 +10,34 @@ interface ClassSchedule {
 }
 
 class ClassesController {
+
+    async index(req: Request, res: Response) {
+        const filters = req.query
+        const subject = filters.subject as string
+        const weekday = filters.weekday as string
+        const time = filters.time as string
+
+        if (!filters.weekday || !filters.subject || !filters.time) {
+            return res.status(400).json({
+                error: 'Filter information missing'
+            })
+        }
+
+        const timeInMinutes = hoursToMinutes(time)
+
+        const classesList = await db('classes')
+            .where('classes.subject', '=', subject)
+            .join('users', 'classes.user_id', '=', 'users.id')
+            .join('class_schedule', 'class_schedule.class_id', '=', 'classes.id')
+            .where('class_schedule.weekday', '=', Number(weekday))
+            .andWhere('class_schedule.from', '<=', timeInMinutes)
+            .andWhere('class_schedule.to', '>', timeInMinutes)
+            .select('classes.*', 'users.*')
+
+        return res.json(classesList)
+
+    }
+
     async create(req: Request, res: Response) {
         const {
             name,
@@ -45,8 +73,8 @@ class ClassesController {
                 return {
                     class_id,
                     weekday: item.weekday,
-                    from: hourToMinutes(item.from),
-                    to: hourToMinutes(item.to)
+                    from: hoursToMinutes(item.from),
+                    to: hoursToMinutes(item.to)
                 }
             })
 
