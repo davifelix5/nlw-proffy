@@ -11,44 +11,6 @@
     color: var(--color-text-in-primary);
 }
 
-#search-teachers .input-block {
-    display: flex;
-    flex-direction: column-reverse;
-
-    position: relative;
-}
-
-#search-teachers .input-block + .input-block {
-    margin-top: 1.4rem;
-}
-
-#search-teachers .input-block label {
-    font-size: 1.4rem;
-}
-
-#search-teachers .input-block input {
-    width: 100%;
-    height: 5.6rem;
-    margin-top: 0.8rem;
-    border-radius: 0.8rem;
-    background-color: var(--color-input-background);
-    border: 1px solid var(--color-line-in-white);
-    outline: 0;
-    padding: 0 1.6rem;
-    font: 1.6rem Archivo;
-}
-
-#search-teachers .input-block:focus-within::after {
-    width: calc(100% - 3.2rem);
-    height: 2px;
-    content: '';
-    background-color: var(--color-primary-light);
-    position: absolute;
-    right: 1.6rem;
-    left: 1.6rem;
-    bottom: 0;
-}
-
 @media (min-width: 700px) {
     #page-teacher-list {
         max-width: 100%;
@@ -62,29 +24,6 @@
         position: absolute;
         bottom: -25px;
         width: 100%
-    }
-
-    #search-teachers .input-block + .input-block {
-        margin-top: 0;
-    }
-
-    #search-teachers label {
-        color: var(--color-text-in-primary);
-        position: absolute;
-        top: 2.5rem;
-        left: 1rem;
-        transition: all .3s;
-    }
-    
-    #search-teachers .input-block label {
-        color: var(--color-text-base);
-    }
-
-    #search-teachers .input-block input:focus + label,
-    #search-teachers .input-block input:not(:placeholder-shown) + label {
-        color: var(--color-text-in-primary);
-        top: -2.2rem;
-        left: 1rem;
     }
 
     .teacher-item {
