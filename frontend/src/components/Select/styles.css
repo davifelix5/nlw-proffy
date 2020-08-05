@@ -1,6 +1,6 @@
 .select-block {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 
     position: relative;
 }
@@ -34,4 +34,10 @@
     right: 1.6rem;
     left: 1.6rem;
     bottom: 0;
+}
+
+@media (min-width: 700px) {
+    .select-block + .select-block {
+        margin-top: 0;
+    }
 }
