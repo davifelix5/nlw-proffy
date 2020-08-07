@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
         maxWidth: 160,
         marginTop: 35,
         marginBottom: 15,
+    },
+
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     }
 })
 
