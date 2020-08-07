@@ -8,7 +8,7 @@ import styles from './styles'
 function FavoriteTeachers() {
     return (
         <View style={styles.container}>
-            <PageHeader title="Favoritos" />
+            <PageHeader title="Proffys favoritos" />
         </View>
     )
 }
