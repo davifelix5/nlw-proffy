@@ -50,7 +50,10 @@ const styles = StyleSheet.create({
     },
 
     submitButtonText: {
-
+        color: '#fff',
+        fontSize: 16,
+        marginLeft: 16,
+        fontFamily: 'Archivo_700Bold',
     }
 
 })
